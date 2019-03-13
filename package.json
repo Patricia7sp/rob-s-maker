@@ -1,23 +1,24 @@
 {
-  "name": "rob-s-maker",
+  "name": "video-maker",
   "version": "1.0.0",
-  "description": "(projeto open source para fazer  videos automatizados na internet)",
+  "description": "Projeto open source para fazer vídeos automatizados",
   "main": "index.js",
-  "dependencies": {
-    "package.json": "^2.0.1"
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "(echo \\\"Error: no test specified\\\" && exit 1)"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Patricia7sp/rob-s-maker.git"
+    "url": "git+https://github.com/filipedeschamps/video-maker.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Patricia7sp/rob-s-maker/issues"
+    "url": "https://github.com/filipedeschamps/video-maker/issues"
   },
-  "homepage": "https://github.com/Patricia7sp/rob-s-maker#readme"
+  "homepage": "https://github.com/filipedeschamps/video-maker#readme",
+  "dependencies": {
+    "algorithmia": "^0.3.10",
+    "readline-sync": "^1.4.9",
+    "sbd": "^1.0.14"
+  }
 }
