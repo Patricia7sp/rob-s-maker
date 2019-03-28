@@ -1,4 +1,3 @@
-
 const algorithmia = require('algorithmia')
 const algorithmiaApiKey = require('../credentials/algorithmia.json').apiKey
 const sentenceBoundaryDetection = require('sbd')
@@ -12,17 +11,22 @@ var nlu = new NaturalLanguageUnderstandingV1({
   url: 'https://gateway.watsonplatform.net/natural-language-understanding/api/'
 })
 
-async function robot(content) {
+const state  = require('./state.js')
+async function robot() {
+  const content = state.load()
+
   await fetchContentFromWikipedia(content)
   sanitizeContent(content)
   breakContentIntoSentences(content)
   limitMaximumSentences(content)
   await fetchKeywordsOfAllSentences(content)
 
+  state.save(content)
+
   async function fetchContentFromWikipedia(content) {
     const algorithmiaAuthenticated = algorithmia(algorithmiaApiKey)
     const wikipediaAlgorithm = algorithmiaAuthenticated.algo('web/WikipediaParser/0.1.2')
-    const wikipediaResponse = await wikipediaAlgorithm.pipe(content.searchTerm)
+    const wikipediaResponse = await wikipediaAlgorithm.pipe(content.searchTerm, content.lang)
     const wikipediaContent = wikipediaResponse.get()
 
     content.sourceContentOriginal = wikipediaContent.content
