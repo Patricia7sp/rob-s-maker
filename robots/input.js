@@ -3,12 +3,13 @@ const state = require('./state.js')
 
 function robot() {
   const content = {
+    useFecthContentFromWikipediaAlgorithmia: false,
     maximumSentences: 7
   }
 
   content.searchTerm = askAndReturnSearchTerm()
   content.prefix = askAndReturnPrefix()
-  content.lang  = askAndReturnLang()
+  content.lang  = askAndReturnLanguage()
   state.save(content)
 
 
@@ -24,10 +25,10 @@ function robot() {
     return selectedPrefixText
   }
 
-      function askAndReturnLang(){
-        const  lang = ['pt','en']
-        const selectedLangIndex = readline.keyInSelect(lang, 'Choose language: ')
-        const selectedLangText = lang[selectedLangIndex]
+      function askAndReturnLanguage(){
+        const  language = ['pt','en', 'es', 'fr']
+        const selectedLangIndex = readline.keyInSelect(language, 'Choice language: ')
+        const selectedLangText = language[selectedLangIndex]
         
         return selectedLangText
       }
